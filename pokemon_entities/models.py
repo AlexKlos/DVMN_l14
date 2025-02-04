@@ -20,3 +20,9 @@ class PokemonEntity(models.Model):
                                 blank=True)
     latitude = models.FloatField(verbose_name='lat')
     longitude = models.FloatField(verbose_name='lon')
+    appeared_at = models.DateTimeField(verbose_name='Время появления',
+                                       null=True,
+                                       blank=True)
+    disapeared_at = models.DateTimeField(verbose_name='Время исчезновения',
+                                         null=True,
+                                         blank=True)
