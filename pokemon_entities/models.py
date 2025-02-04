@@ -26,3 +26,18 @@ class PokemonEntity(models.Model):
     disapeared_at = models.DateTimeField(verbose_name='Время исчезновения',
                                          null=True,
                                          blank=True)
+    level = models.PositiveSmallIntegerField(verbose_name='Уровень',
+                                             null=True,
+                                             blank=True)
+    health = models.PositiveSmallIntegerField(verbose_name='Здоровье',
+                                              null=True,
+                                              blank=True)
+    Strength = models.PositiveSmallIntegerField(verbose_name='Сила',
+                                                null=True,
+                                                blank=True)
+    defence = models.PositiveSmallIntegerField(verbose_name='Защита',
+                                               null=True,
+                                               blank=True)
+    stamina = models.PositiveSmallIntegerField(verbose_name='Выносливость',
+                                               null=True,
+                                               blank=True)
