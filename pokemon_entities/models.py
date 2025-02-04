@@ -7,6 +7,9 @@ class Pokemon(models.Model):
                               verbose_name='Изображение Покемона', 
                               null=True, 
                               blank=True)
+    description = models.TextField(verbose_name='Описание',
+                                   null=True,
+                                   blank=True)
 
     def __str__(self):
         return self.title
