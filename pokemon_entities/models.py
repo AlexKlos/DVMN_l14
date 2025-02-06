@@ -34,8 +34,8 @@ class PokemonEntity(models.Model):
                                 related_name='entities',
                                 null=True, 
                                 blank=True)
-    latitude = models.FloatField(verbose_name='lat')
-    longitude = models.FloatField(verbose_name='lon')
+    latitude = models.FloatField(verbose_name='широта')
+    longitude = models.FloatField(verbose_name='долгота')
     appeared_at = models.DateTimeField(verbose_name='Время появления',
                                        null=True,
                                        blank=True)
