@@ -16,15 +16,22 @@ class Pokemon(models.Model):
     description = models.TextField(verbose_name='Описание',
                                    null=True,
                                    blank=True)
+    previous_evolution = models.ForeignKey('self', 
+                                           on_delete=models.SET_NULL, 
+                                           verbose_name='Из кого эволюционирует',
+                                           related_name='next_evolutions',
+                                           null=True,
+                                           blank=True)
 
     def __str__(self):
         return self.title
-    
+
 
 class PokemonEntity(models.Model):
     pokemon = models.ForeignKey(Pokemon, 
                                 on_delete=models.CASCADE, 
-                                verbose_name='Покемон', 
+                                verbose_name='Покемон',
+                                related_name='entities',
                                 null=True, 
                                 blank=True)
     latitude = models.FloatField(verbose_name='lat')
@@ -41,7 +48,7 @@ class PokemonEntity(models.Model):
     health = models.PositiveSmallIntegerField(verbose_name='Здоровье',
                                               null=True,
                                               blank=True)
-    Strength = models.PositiveSmallIntegerField(verbose_name='Сила',
+    strength = models.PositiveSmallIntegerField(verbose_name='Сила',
                                                 null=True,
                                                 blank=True)
     defence = models.PositiveSmallIntegerField(verbose_name='Защита',
