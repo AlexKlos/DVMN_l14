@@ -37,7 +37,7 @@ class PokemonEntity(models.Model):
     appeared_at = models.DateTimeField(verbose_name='Время появления',
                                        null=True,
                                        blank=True)
-    disapeared_at = models.DateTimeField(verbose_name='Время исчезновения',
+    disappeared_at = models.DateTimeField(verbose_name='Время исчезновения',
                                          null=True,
                                          blank=True)
     level = models.PositiveSmallIntegerField(verbose_name='Уровень',

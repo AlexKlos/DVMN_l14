@@ -50,7 +50,7 @@ def show_all_pokemons(request):
         pokemon_entities = PokemonEntity.objects.filter(
             pokemon=pokemon,
             appeared_at__lte=current_time,
-            disapeared_at__gte=current_time
+            disappeared_at__gte=current_time
         )
         for entity in pokemon_entities:
             image_path = get_image_path(pokemon)
@@ -73,7 +73,7 @@ def show_pokemon(request, pokemon_id):
     pokemon_entities = PokemonEntity.objects.filter(
         pokemon=requested_pokemon,
         appeared_at__lte=current_time,
-        disapeared_at__gte=current_time
+        disappeared_at__gte=current_time
     )
 
     folium_map = folium.Map(location=MOSCOW_CENTER, zoom_start=12)
