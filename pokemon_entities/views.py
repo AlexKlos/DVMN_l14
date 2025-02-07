@@ -29,6 +29,11 @@ def add_pokemon(folium_map, lat, lon, image_url=DEFAULT_IMAGE_URL):
     ).add_to(folium_map)
 
 
+def get_image_path(pokemon: Pokemon) -> str:
+    image_path = os.path.join(settings.MEDIA_ROOT, pokemon.image.name) if pokemon.image else DEFAULT_IMAGE_URL
+    return image_path
+
+
 def show_all_pokemons(request):
     pokemons = Pokemon.objects.all()
     pokemons_on_page = []
@@ -48,7 +53,7 @@ def show_all_pokemons(request):
             disapeared_at__gte=current_time
         )
         for entity in pokemon_entities:
-            image_path = os.path.join(settings.MEDIA_ROOT, pokemon.image.name) if pokemon.image else DEFAULT_IMAGE_URL
+            image_path = get_image_path(pokemon)
             add_pokemon(
                 folium_map,
                 entity.latitude,
@@ -74,7 +79,7 @@ def show_pokemon(request, pokemon_id):
     folium_map = folium.Map(location=MOSCOW_CENTER, zoom_start=12)
 
     for entity in pokemon_entities:
-        image_path = os.path.join(settings.MEDIA_ROOT, requested_pokemon.image.name) if requested_pokemon.image else DEFAULT_IMAGE_URL
+        image_path = get_image_path(requested_pokemon)
         add_pokemon(
             folium_map,
             entity.latitude,
